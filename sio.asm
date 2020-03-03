@@ -1,65 +1,60 @@
 ; Helpers for standart input/output in MS DOS
 .model small
-.stack 100h
 
 .code
 ; Define print string function
-print_string proc
-    push ah
-    
+; | input:
+; string - string offset in memory
+printstring proc pascal near
+arg string:word
+uses ax, dx
+    mov dx, string
     mov ah, 09h
     int 21h
-
-    pop ah
     ret
-print_string endp
+endp
 
-; Geting char procedure
-getchar proc
-    push ah
-
+; Getting char procedure
+; | output:
+; al - printed char
+getchar proc pascal near
+uses bx
+    push ax
     mov ah, 01h
     int 21h
-
-    pop ah
+    mov bl, al
+    pop ax
+    mov al, bl
     ret
-getchar endp
+endp
 
 ; Putting char to display
 ; | input:
-; dl - char to display
-; | output:
-; al - printed char
-putchar proc
-    push ah 
-
+; char - char to display
+putchar proc pascal near
+arg char:byte
+uses ax, dx
     mov ah, 02h
+    mov dl, char
     int 21h
-
-    pop ah
     ret
-putchar endp
-
+endp
 
 ; Getting string from console
 ; | input:
 ; dx - empty buffer string
 ; | output:
 ; dx - buffer filled data
-getstring proc
-    push ah
-    push bx
-
+getstring proc pascal near
+uses ax, bx
     mov ah, 0ah
     int 21
     
     mov bx, dx
     mov bl, [bx + 1]
-    add bl, dx
+    add bx, dx
     xor bh, bh
     mov byte ptr[bx + 2], "$"
     add dx, 2
-    pop bx
-    pop ah
     ret
-getstring endp
+endp
