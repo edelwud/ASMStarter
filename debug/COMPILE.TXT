@@ -1,0 +1,17 @@
+Microsoft (R) Macro Assembler Version 5.00 
+Copyright (C) Microsoft Corp 1981-1985, 1987.  All rights reserved.
+
+Object filename [MAIN.OBJ]: Source listing  [NUL.LST]: Cross-reference [NUL.CRF]: sio.asm(8): warning A4057: Illegal size for operand
+sio.asm(13): warning A4057: Illegal size for operand
+sio.asm(19): warning A4057: Illegal size for operand
+sio.asm(24): warning A4057: Illegal size for operand
+sio.asm(34): warning A4057: Illegal size for operand
+sio.asm(39): warning A4057: Illegal size for operand
+sio.asm(50): warning A4057: Illegal size for operand
+sio.asm(58): warning A4031: Operand types must match
+sio.asm(63): warning A4057: Illegal size for operand
+
+  51516 + 448644 Bytes symbol space free
+
+      9 Warning Errors
+      0 Severe  Errors
