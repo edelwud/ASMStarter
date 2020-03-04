@@ -30,7 +30,6 @@ CMD = $(CMD_INTERFACE) $(1)
 MOVE_CMD = $(call CMD,"copy $(1) $(2)") \
 $(call CMD, "del $(1)")
 
-
 all: build execute
 	
 build:
@@ -38,8 +37,8 @@ build:
 	$(call CMD,"mount $(DISK_COMPILATOR_NAME) $(WORK_FOLDER)") \
 	$(call CMD,"mount $(DISK_EXECUTABLE_NAME) $(CURRENT_FOLDER)") \
 	$(call CMD,"$(DISK_EXECUTABLE_NAME):") \
-	$(call CMD,"$(DISK_COMPILATOR_NAME):\MASM.EXE $(ASSEMBLY) < $(STARTUP_FILE) > $(COMPILE_LOG_FILE)") \
-	$(call CMD,"$(DISK_COMPILATOR_NAME):\LINK.EXE $(OBJECTS) < $(STARTUP_FILE) > $(LINK_LOG_FILE)") \
+	$(call CMD,"$(DISK_COMPILATOR_NAME):\TASM.EXE $(ASSEMBLY) < $(STARTUP_FILE) > $(COMPILE_LOG_FILE)") \
+	$(call CMD,"$(DISK_COMPILATOR_NAME):\TLINK.EXE $(OBJECTS) < $(STARTUP_FILE) > $(LINK_LOG_FILE)") \
 	$(call MOVE_CMD,$(OBJECTS),$(DIST_FOLDER)) \
 	$(call MOVE_CMD,$(EXECUTABLE),$(DIST_FOLDER)) \
 	$(call CMD,"exit")
@@ -48,5 +47,13 @@ execute:
 	dosbox \
 	$(call CMD,"mount $(DISK_EXECUTABLE_NAME) $(CURRENT_FOLDER)") \
 	$(call CMD,"$(DISK_EXECUTABLE_NAME):") \
+	$(call CMD,"cls") \
 	$(call CMD,"$(DIST_FOLDER)\$(EXECUTABLE)") \
-	$(call CMD,"exit")
+	# $(call CMD,"exit")
+	
+deb: build
+	dosbox \
+	$(call CMD,"mount $(DISK_COMPILATOR_NAME) $(WORK_FOLDER)") \
+	$(call CMD,"mount $(DISK_EXECUTABLE_NAME) $(CURRENT_FOLDER)") \
+	$(call CMD,"$(DISK_EXECUTABLE_NAME):") \
+	$(call CMD,"$(DISK_COMPILATOR_NAME):\td.EXE $(DIST_FOLDER)\$(EXECUTABLE)")

@@ -10,13 +10,9 @@ include sio.asm
 start:
     mov ax, @data
     mov ds, ax
-    lea dx, message
 
-    call getchar
-    mov dl, al
-    call putchar
-
-    call exit
+    call getstring pascal, offset message
+    call printstring pascal, offset message
 exit:
     mov ah, 4ch
     int 21h

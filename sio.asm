@@ -8,6 +8,7 @@
 printstring proc pascal near
 arg string:word
 uses ax, dx
+    add string, 2 ; header offset
     mov dx, string
     mov ah, 09h
     int 21h
@@ -18,6 +19,7 @@ endp
 ; | output:
 ; al - printed char
 getchar proc pascal near
+arg char:byte
 uses bx
     push ax
     mov ah, 01h
@@ -42,13 +44,15 @@ endp
 
 ; Getting string from console
 ; | input:
-; dx - empty buffer string
+; string - empty buffer string
 ; | output:
-; dx - buffer filled data
+; string - buffer filled data
 getstring proc pascal near
+arg string:word
 uses ax, bx
     mov ah, 0ah
-    int 21
+    mov dx, string
+    int 21h
     
     mov bx, dx
     mov bl, [bx + 1]
