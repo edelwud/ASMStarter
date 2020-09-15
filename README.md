@@ -22,9 +22,13 @@ CURRENT_FOLDER=$(patsubst %/,%,$(dir $(MAKEFILE_PATH)))
 WORK_FOLDER=$(CURRENT_FOLDER)/bin
 ```
 **DOSBOX_EXECUTOR** - dobox or dosbox-x
+
 **MAKEFILE_PATH** - Path to Makefile (automatic on linux)
+
 **CURRENT_FOLDER** - Path to your current folder (automatic on linux)
+
 **WORK_FOLDER** - PATH TO ASM execute binaries (automatic on linux)
+
 3. Install DOSBox or DOSBox-X
 ```bash
 sudo apt-get install dosbox
