@@ -12,10 +12,10 @@ ASM Starter templete
 - Makefile
 - sio.asm (standart input and output functions)
 ## Usage
-1. Use current files(TASM.EXE, TD.EXE, TLINK.EXE) or download TASM and load to **~/bin**
+**1.** Use current files(TASM.EXE, TD.EXE, TLINK.EXE) or download TASM and load to **~/bin**
 
 
-2. Configure Makefile with custom PATHs
+**2.** Configure Makefile with custom PATHs
 ```
 DOSBOX_EXECUTOR=dosbox
 
@@ -32,21 +32,22 @@ WORK_FOLDER=$(CURRENT_FOLDER)/bin
 **WORK_FOLDER** - PATH TO ASM execute binaries (automatic on linux)
 
 
-3. Install DOSBox or DOSBox-X
+**3.** Install DOSBox or DOSBox-X
 ```bash
 sudo apt-get install dosbox
+```
 
 
-4. Initialize
+**4.** Initialize
 ```
 make init
 ```
 
 
-5. Execute:
+**5.** Execute:
 ```bash
 make all
 ```
 
 
-6. For visual studio code (tasks.json) execute with **CTRL+SHIFT+B**
+**6.** For visual studio code (tasks.json) execute with **CTRL+SHIFT+B**
