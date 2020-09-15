@@ -23,13 +23,13 @@ MAKEFILE_PATH=$(abspath $(lastword $(MAKEFILE_LIST)))
 CURRENT_FOLDER=$(patsubst %/,%,$(dir $(MAKEFILE_PATH)))
 WORK_FOLDER=$(CURRENT_FOLDER)/bin
 ```
-**DOSBOX_EXECUTOR** - dobox or dosbox-x
+**DOSBOX_EXECUTOR** - dosbox or dosbox-x
 
-**MAKEFILE_PATH** - Path to Makefile (automatic on linux)
+**MAKEFILE_PATH** - Path to Makefile (automatically on linux)
 
-**CURRENT_FOLDER** - Path to your current folder (automatic on linux)
+**CURRENT_FOLDER** - Path to your current folder (automatically on linux)
 
-**WORK_FOLDER** - PATH TO ASM execute binaries (automatic on linux)
+**WORK_FOLDER** - PATH TO ASM execute binaries (automatically on linux)
 
 
 **3.** Install DOSBox or DOSBox-X
