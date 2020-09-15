@@ -1,9 +1,11 @@
 # INCOMING
 FILENAMES=MAIN
 
-WORK_FOLDER=/home/edelwud/ASM
+DOSBOX_EXECUTOR=dosbox
+
 MAKEFILE_PATH=$(abspath $(lastword $(MAKEFILE_LIST)))
 CURRENT_FOLDER=$(patsubst %/,%,$(dir $(MAKEFILE_PATH)))
+WORK_FOLDER=$(CURRENT_FOLDER)/bin
 DIST_FOLDER=dist
 DATA_FOLDER=data
 DEBUG_FOLDER=debug
@@ -31,9 +33,13 @@ MOVE_CMD = $(call CMD,"copy $(1) $(2)") \
 $(call CMD, "del $(1)")
 
 all: build execute
+
+init:
+	mkdir -p debug
+	mkdir -p dist
 	
 build:
-	dosbox \
+	$(DOSBOX_EXECUTOR) \
 	$(call CMD,"mount $(DISK_COMPILATOR_NAME) $(WORK_FOLDER)") \
 	$(call CMD,"mount $(DISK_EXECUTABLE_NAME) $(CURRENT_FOLDER)") \
 	$(call CMD,"$(DISK_EXECUTABLE_NAME):") \
@@ -44,7 +50,7 @@ build:
 	$(call CMD,"exit")
 
 execute:
-	dosbox \
+	$(DOSBOX_EXECUTOR) \
 	$(call CMD,"mount $(DISK_EXECUTABLE_NAME) $(CURRENT_FOLDER)") \
 	$(call CMD,"$(DISK_EXECUTABLE_NAME):") \
 	$(call CMD,"cls") \
@@ -52,8 +58,8 @@ execute:
 	# $(call CMD,"exit")
 	
 deb: build
-	dosbox \
+	$(DOSBOX_EXECUTOR) \
 	$(call CMD,"mount $(DISK_COMPILATOR_NAME) $(WORK_FOLDER)") \
 	$(call CMD,"mount $(DISK_EXECUTABLE_NAME) $(CURRENT_FOLDER)") \
 	$(call CMD,"$(DISK_EXECUTABLE_NAME):") \
-	$(call CMD,"$(DISK_COMPILATOR_NAME):\td.EXE $(DIST_FOLDER)\$(EXECUTABLE)")
+	$(call CMD,"$(DISK_COMPILATOR_NAME):\TD.EXE $(DIST_FOLDER)\$(EXECUTABLE)")
